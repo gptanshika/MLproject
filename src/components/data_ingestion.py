@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
  
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 
 
 @dataclass
@@ -43,7 +44,9 @@ if __name__=='__main__':
     obj=initiate_date_ingestion()
     obj_transformation = DataTransformation()
     train_path,test_path = obj.initiate_data_ingestion()
-    print(obj.initiate_data_ingestion())
-    print(obj_transformation.iniate_data_transformation(train_path,test_path))
+    train_data,test_data,preprocessing = obj_transformation.iniate_data_transformation(train_path,test_path)
+    model_obj = ModelTrainer()
+    print(model_obj.initiate_model_trainer(train_data,test_data,preprocessing))
+
 
 
